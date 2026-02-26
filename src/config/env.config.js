@@ -8,8 +8,13 @@ module.exports = {
         : ['*'],
 
     // SendGrid
+    //convenios
     SENDGRID_API_KEY_CONVENIOS: process.env.SENDGRID_API_KEY_CONVENIOS,
     SENDGRID_FROM_EMAIL_CONVENIOS: process.env.SENDGRID_FROM_EMAIL_CONVENIOS,
+
+    //centinela
+    SENDGRID_API_KEY_CENTINELA: process.env.SENDGRID_API_KEY_CENTINELA,
+    SENDGRID_FROM_EMAIL_CENTINELA: process.env.SENDGRID_FROM_EMAIL_CENTINELA,
 
     // Nodemailer
     SMTP_HOST_TANDEM: process.env.SMTP_HOST_TANDEM,

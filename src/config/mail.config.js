@@ -14,6 +14,11 @@ module.exports = {
             apiKey: env.SENDGRID_API_KEY_CONVENIOS,
             from: env.SENDGRID_FROM_EMAIL_CONVENIOS
         },
+        centinela: {
+            provider: 'sendgrid',
+            apiKey: env.SENDGRID_API_KEY_CENTINELA,
+            from: env.SENDGRID_FROM_EMAIL_CENTINELA
+        },
         tandemIndustrial: {
             provider: 'nodemailer',
             host: env.SMTP_HOST_TANDEM,
