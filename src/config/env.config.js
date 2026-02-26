@@ -1,28 +1,43 @@
 require('dotenv').config();
 
 module.exports = {
+    // ================================
+    // SERVER CONFIGURATION
+    // ================================
     PORT: process.env.PORT,
     NODE_ENV: process.env.NODE_ENV,
     CORS_ORIGINS: process.env.CORS_ORIGINS
         ? process.env.CORS_ORIGINS.split(',')
         : ['*'],
 
-    // SendGrid
-    //convenios
-    SENDGRID_API_KEY_CONVENIOS: process.env.SENDGRID_API_KEY_CONVENIOS,
-    SENDGRID_FROM_EMAIL_CONVENIOS: process.env.SENDGRID_FROM_EMAIL_CONVENIOS,
+    // ================================
+    // SENDGRID CONFIGURATION
+    // ================================
 
-    //centinela
-    SENDGRID_API_KEY_CENTINELA: process.env.SENDGRID_API_KEY_CENTINELA,
-    SENDGRID_FROM_EMAIL_CENTINELA: process.env.SENDGRID_FROM_EMAIL_CENTINELA,
+    // Service 1
+    SENDGRID_API_KEY_SERVICE1: process.env.SENDGRID_API_KEY_SERVICE1,
+    SENDGRID_FROM_EMAIL_SERVICE1: process.env.SENDGRID_FROM_EMAIL_SERVICE1,
 
-    // Nodemailer
-    SMTP_HOST_TANDEM: process.env.SMTP_HOST_TANDEM,
-    SMTP_PORT_TANDEM: process.env.SMTP_PORT_TANDEM,
-    SMTP_USER_TANDEM: process.env.SMTP_USER_TANDEM,
-    SMTP_PASS_TANDEM: process.env.SMTP_PASS_TANDEM,
-    SMTP_FROM_TANDEM: process.env.SMTP_FROM_TANDEM,
+    // Service 2
+    SENDGRID_API_KEY_SERVICE2: process.env.SENDGRID_API_KEY_SERVICE2,
+    SENDGRID_FROM_EMAIL_SERVICE2: process.env.SENDGRID_FROM_EMAIL_SERVICE2,
 
-    TEST_USER: process.env.TEST_USER,
-    TEST_APP_PASSWORD: process.env.TEST_APP_PASSWORD
+    // ================================
+    // NODEMAILER - SMTP GENÉRICO
+    // ================================
+
+    // Service 3
+    SMTP_HOST_SERVICE3: process.env.SMTP_HOST_SERVICE3,
+    SMTP_PORT_SERVICE3: process.env.SMTP_PORT_SERVICE3,
+    SMTP_USER_SERVICE3: process.env.SMTP_USER_SERVICE3,
+    SMTP_PASS_SERVICE3: process.env.SMTP_PASS_SERVICE3,
+    SMTP_FROM_SERVICE3: process.env.SMTP_FROM_SERVICE3,
+
+    // ================================
+    // NODEMAILER - GMAIL
+    // ================================
+
+    GMAIL_USER_SERVICE4: process.env.GMAIL_USER_SERVICE4,
+    GMAIL_APP_PASSWORD_SERVICE4: process.env.GMAIL_APP_PASSWORD_SERVICE4,
+    GMAIL_FROM_SERVICE4: process.env.GMAIL_FROM_SERVICE4
 };

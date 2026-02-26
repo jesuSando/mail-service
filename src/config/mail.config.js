@@ -2,30 +2,34 @@ const env = require('./env.config');
 
 module.exports = {
     services: {
-        test: {
+        service1: {
+            provider: 'sendgrid',
+            apiKey: env.SENDGRID_API_KEY_SERVICE1,
+            from: env.SENDGRID_FROM_EMAIL_SERVICE1
+        },
+        service2: {
+            provider: 'sendgrid',
+            apiKey: env.SENDGRID_API_KEY_SERVICE2,
+            from: env.SENDGRID_FROM_EMAIL_SERVICE2
+        },
+
+        // caso 1 de nodemailer
+        service3: {
+            provider: 'nodemailer',
+            host: env.SMTP_HOST_SERVICE3,
+            port: Number(env.SMTP_PORT_SERVICE3),
+            user: env.SMTP_USER_SERVICE3,
+            pass: env.SMTP_PASS_SERVICE3,
+            from: env.SMTP_FROM_SERVICE3
+        },
+
+        // caso 2 de nodemailer
+        service4: {
             provider: 'nodemailer',
             service: 'gmail',
-            user: env.TEST_USER,
-            pass: env.TEST_APP_PASSWORD,
-            from: env.TEST_USER
-        },
-        convenios: {
-            provider: 'sendgrid',
-            apiKey: env.SENDGRID_API_KEY_CONVENIOS,
-            from: env.SENDGRID_FROM_EMAIL_CONVENIOS
-        },
-        centinela: {
-            provider: 'sendgrid',
-            apiKey: env.SENDGRID_API_KEY_CENTINELA,
-            from: env.SENDGRID_FROM_EMAIL_CENTINELA
-        },
-        tandemIndustrial: {
-            provider: 'nodemailer',
-            host: env.SMTP_HOST_TANDEM,
-            port: env.SMTP_PORT_TANDEM,
-            user: env.SMTP_USER_TANDEM,
-            pass: env.SMTP_PASS_TANDEM,
-            from: env.SMTP_FROM_TANDEM
+            user: env.GMAIL_USER_SERVICE4,
+            pass: env.GMAIL_APP_PASSWORD_SERVICE4,
+            from: env.GMAIL_FROM_SERVICE4
         }
     }
 };
