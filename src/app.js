@@ -9,7 +9,7 @@ const env = require('./config/env');
 const corsMiddleware = require('./middlewares/cors.middleware');
 const notFound = require('./middlewares/notFound.middleware');
 const errorHandler = require('./middlewares/error.middleware');
-// const routes = require('./routes/index.routes');
+const mailRoutes = require('./routes/mail.routes');
 
 const app = express();
 
@@ -29,8 +29,7 @@ app.use(corsMiddleware);
 
 app.use(express.json());
 
-// app.use('/api', routes);
-
+app.use('/api/mail', mailRoutes);
 app.get('/api/test', (req, res) => {
     res.json({
         status: 'OK',
