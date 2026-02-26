@@ -17,7 +17,7 @@ app.use(helmet());
 
 app.use(compression());
 
-if (env.NODE_ENV === 'development') app.use(morgan('dev'));
+env.NODE_ENV === 'development' ? app.use(morgan('dev')) : app.use(morgan('combined'));
 
 app.use(rateLimit({
     windowMs: 15 * 60 * 1000, // 15 min
