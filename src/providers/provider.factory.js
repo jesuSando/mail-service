@@ -2,23 +2,27 @@ const SendgridProvider = require('./sendgrid.provider');
 const NodemailerProvider = require('./nodemailer.provider');
 const mailConfig = require('../config/mail.config');
 
-function getProvider(serviceName) {
-    const config = mailConfig[serviceName];
+class ProviderFactory {
+    static getProvider(serviceName) {
+        const serviceKey = serviceName
 
-    if (!config) {
-        throw new Error(`Service "${serviceName}" not configured`);
-    }
+        const config = mailConfig.services[serviceKey];
 
-    switch (config.provider) {
-        case 'sendgrid':
-            return new SendgridProvider(config);
+        if (!config) {
+            throw new Error(`Service "${serviceKey}" not configured.`);
+        }
 
-        case 'nodemailer':
-            return new NodemailerProvider(config);
+        switch (config.provider) {
+            case 'sendgrid':
+                return new SendgridProvider(config);
 
-        default:
-            throw new Error(`Provider "${config.provider}" not supported`);
+            case 'nodemailer':
+                return new NodemailerProvider(config);
+
+            default:
+                throw new Error(`Provider "${config.provider}" not supported`);
+        }
     }
 }
 
-module.exports = { getProvider };
+module.exports = ProviderFactory;

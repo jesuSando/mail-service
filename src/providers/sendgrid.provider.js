@@ -1,21 +1,44 @@
-const sendgridMail = require('@sendgrid/mail');
+const sgMail = require('@sendgrid/mail');
 
 class SendgridProvider {
     constructor({ apiKey, from }) {
-        this.client = require('@sendgrid/mail');
-        this.client.setApiKey(apiKey);
+        if (!apiKey) {
+            throw new Error('SendGrid API key is required');
+        }
+
+        sgMail.setApiKey(apiKey);
         this.from = from;
     }
 
-    async send({ to, subject, html }) {
-        await this.client.send({
-            to,
-            from: this.from,
-            subject,
-            html
-        });
+    async send({ to, subject, html, attachments = [] }) {
+        try {
+            const msg = {
+                to: Array.isArray(to) ? to : [to],
+                from: {
+                    email: this.from,
+                },
+                subject,
+                html,
+                attachments: attachments.map(att => ({
+                    content: att.content,
+                    filename: att.filename,
+                    type: att.type,
+                    disposition: att.disposition || 'attachment'
+                }))
+            };
 
-        return { success: true };
+            const response = await sgMail.send(msg);
+
+            return {
+                success: true,
+                messageId: response[0]?.headers['x-message-id'],
+                provider: 'sendgrid'
+            };
+
+        } catch (error) {
+            console.error('[SendGrid] Error:', error.response?.body || error);
+            throw new Error(`SendGrid error: ${error.message}`);
+        }
     }
 }
 

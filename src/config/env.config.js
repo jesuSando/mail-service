@@ -16,5 +16,8 @@ module.exports = {
     SMTP_PORT_TANDEM: process.env.SMTP_PORT_TANDEM,
     SMTP_USER_TANDEM: process.env.SMTP_USER_TANDEM,
     SMTP_PASS_TANDEM: process.env.SMTP_PASS_TANDEM,
-    SMTP_FROM_TANDEM: process.env.SMTP_FROM_TANDEM
+    SMTP_FROM_TANDEM: process.env.SMTP_FROM_TANDEM,
+
+    TEST_USER: process.env.TEST_USER,
+    TEST_APP_PASSWORD: process.env.TEST_APP_PASSWORD
 };
