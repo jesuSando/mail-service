@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const compression = require('compression');
 
-const { NODE_ENV } = require('./config/env');
+const env = require('./config/env');
 
 const corsMiddleware = require('./middlewares/cors.middleware');
 const notFound = require('./middlewares/notFound.middleware');
@@ -17,7 +17,7 @@ app.use(helmet());
 
 app.use(compression());
 
-if (NODE_ENV === 'development') app.use(morgan('dev'));
+if (env.NODE_ENV === 'development') app.use(morgan('dev'));
 
 app.use(rateLimit({
     windowMs: 15 * 60 * 1000, // 15 min
