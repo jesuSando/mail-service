@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const compression = require('compression');
 
-const env = require('./config/env');
+const env = require('./config/env.config');
 
 const corsMiddleware = require('./middlewares/cors.middleware');
 const notFound = require('./middlewares/notFound.middleware');

@@ -1,11 +1,8 @@
-const sgMail = require('@sendgrid/mail');
 const templates = require('../templates');
-const env = require('../config/env');
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const { getProvider } = require('../providers/provider.factory');
 
 class MailService {
-    static async sendEmail({ to, subject, templateName, data }) {
+    static async sendEmail({ serviceName, to, subject, templateName, data }) {
         const template = templates[templateName];
 
         if (!template) {
@@ -14,19 +11,13 @@ class MailService {
 
         const html = template(data);
 
-        const msg = {
+        const provider = getProvider(serviceName);
+
+        return provider.send({
             to,
-            from: process.env.SENDGRID_FROM_EMAIL,
             subject,
             html
-        };
-
-        await sgMail.send(msg);
-
-        return {
-            success: true,
-            message: 'Email sent successfully'
-        };
+        });
     }
 }
 

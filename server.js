@@ -1,5 +1,5 @@
-const app = require('./src/app.js');
-const env = require('./src/config/env.js');
+const app = require('./src/app');
+const env = require('./src/config/env.config');
 
 
 app.listen(env.PORT, () => {
